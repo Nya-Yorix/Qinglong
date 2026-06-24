@@ -14,4 +14,3 @@
 | -------- | ------------------------------------------------ |
 | 库街区   | https://github.com/mxyooR/Kuro-autosignin        |
 | 阿里云盘 | https://github.com/Stonewuu/aliyundrive_autosign |
-
