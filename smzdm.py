@@ -46,6 +46,22 @@ def wait_with_countdown(delay_seconds, task_name):
         time.sleep(sleep_time)
         remaining -= sleep_time
 
+
+def parse_json_response(response, description="JSON响应"):
+    """尝试解析JSON响应，兼容控制字符问题"""
+    text = response.text
+    try:
+        return json.loads(text, strict=False)
+    except json.JSONDecodeError as e:
+        cleaned = re.sub(r'[\x00-\x1f]+', '', text)
+        try:
+            return json.loads(cleaned, strict=False)
+        except json.JSONDecodeError:
+            print(f"❌ {description} 解析失败: {e}")
+            print(f"响应内容前200字符: {repr(text[:200])}")
+            raise
+
+
 def notify_user(title, content):
     """统一通知函数"""
     if hadsend:
@@ -118,7 +134,10 @@ def get_monthly_exp(cookie):
             if resp.status_code != 200:
                 break
                 
-            result = resp.json()
+            try:
+                result = parse_json_response(resp, "本月经验获取")
+            except json.JSONDecodeError:
+                break
             rows = result.get('data', {}).get('rows', [])
             
             if not rows:
@@ -177,7 +196,7 @@ def smzdm_signin(cookie, index):
         
         # 尝试解析JSON
         try:
-            result = html.json()
+            result = parse_json_response(html, "Token获取")
         except json.JSONDecodeError as e:
             error_msg = f"❌ 账号{index}: 响应不是有效的JSON格式 - {str(e)}"
             print(error_msg)
@@ -224,7 +243,7 @@ def smzdm_signin(cookie, index):
             return error_msg, False
         
         try:
-            signin_result = html_signin.json()
+            signin_result = parse_json_response(html_signin, "签到响应")
         except json.JSONDecodeError as e:
             error_msg = f"❌ 账号{index}: 签到响应不是有效的JSON格式 - {str(e)}"
             print(error_msg)
@@ -242,7 +261,7 @@ def smzdm_signin(cookie, index):
         reward_info = ""
         if html_reward.status_code == 200:
             try:
-                reward_result = html_reward.json()
+                reward_result = parse_json_response(html_reward, "奖励查询响应")
                 
                 if str(reward_result.get('error_code')) == "0" and reward_result.get('data'):
                     normal_reward = reward_result["data"].get("normal_reward", {})
