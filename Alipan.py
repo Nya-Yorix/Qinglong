@@ -2,7 +2,7 @@
 # coding=utf-8
 '''
 cron: 0 30 0 * * *
-name: 阿里云盘'
+name: 阿里云盘
 '''
 import sys
 import notify
