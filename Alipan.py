@@ -1,9 +1,10 @@
-#!/usr/bin/python
-# coding=utf-8
 """
 cron: 0 30 * * *
 name: 阿里云盘
 """
+#!/usr/bin/python
+# coding=utf-8
+
 import sys
 import notify
 import os
