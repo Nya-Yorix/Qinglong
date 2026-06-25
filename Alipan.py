@@ -1,8 +1,6 @@
-
 """
 cron: 0 30 * * *
 new Env('阿里云盘')
-name: 阿里云盘
 """
 #!/usr/bin/python
 # coding=utf-8
