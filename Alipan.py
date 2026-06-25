@@ -1,5 +1,5 @@
 """
-cron: 0 30 * * *
+cron: 0 30 0 * * *
 new Env('阿里云盘')
 """
 #!/usr/bin/python
