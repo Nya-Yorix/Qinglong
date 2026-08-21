@@ -7,6 +7,7 @@
 | 百度网盘     | `BAIDU_COOKIE`              | Cookie 字符串 `key1=value1; key2=value2; ...`                |
 | 夸克网盘     | `COOKIE_QUARK`              | 格式：`user=UserName;url=https://...` 示例：`user=Yorix;url=https://drive-m.quark.cn/1/clouddrive/file/count?pr=uc&fr=pc&pdir_count=...` |
 | 什么值得买   | `SMZDM_COOKIE`              | Cookie 字符串 `key1=value1; key2=value2; ...`                |
+| 肖恩AI       | -------------               |修改代码                                                      |
 ## Other
 
 | APP      | Github                                           |
