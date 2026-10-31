@@ -12,7 +12,7 @@ const path = require("path");
 const BASE = "https://go.toter.me";
 const LOG = path.join(process.cwd(), "supxh_signin.log");
 
-// 解析 SUPXH_ACCOUNTS: "user1&passwd#user2&passwd"
+// 解析 SUPXH_ACCOUNTS: "user1#passwd&user2#passwd"
 function parseAccounts(raw) {
   const list = [];
   for (const seg of String(raw || "").split("&")) {
