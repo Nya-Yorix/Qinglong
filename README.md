@@ -9,7 +9,7 @@
 | 酷狗音乐     | `kgck`                      | 格式：`token#userid` 抓完包直接搜索*token*在URL里就能找到变量|
 | 夸克网盘     | `COOKIE_QUARK`              | 格式：`user=UserName;url=https://...` 示例：`user=Yorix;url=https://...` |
 | 什么值得买   | `SMZDM_COOKIE`              | Cookie 字符串 `key1=value1; key2=value2; ...`                |
-| 肖恩AI       | `SUPXH_ACCOUNTS`            |UserName_1#PassWord&UserName_2#PassWord                          |
+| 肖恩AI       | `SUPXH_ACCOUNTS`            |UserName_1#Password&UserName_2#Password                          |
 ## Other
 
 | APP      | Github                                           |
